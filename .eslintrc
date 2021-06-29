@@ -1,3 +1,34 @@
 {
-  "extends": ["next", "next/core-web-vitals"]
+  "extends": [
+    "next", 
+    "next/core-web-vitals", 
+    "@strv/eslint-config-react",
+    "@strv/eslint-config-react/optional",
+    "@strv/eslint-config-typescript",
+    "prettier",
+    "prettier/react"],
+
+    "plugins": ["react-hooks"],
+
+    "root": true,
+
+    "rules": {
+      "no-console": [
+        "error",
+        {
+          "allow": [
+            "warn",
+            "error"
+          ]
+        }
+      ],
+      "no-underscore-dangle": [
+        "error",
+        {
+          "allow": [
+            "__typename"
+          ]
+        }
+      ]
+    }
 }
