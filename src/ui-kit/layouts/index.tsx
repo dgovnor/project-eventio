@@ -1,6 +1,6 @@
 import React, { useContext, FC } from 'react'
 import { UserContext } from '../../store/user/UserContext'
-import{ PublicLayout} from './PublicLayout'
+import{ PublicLayout, PrivateLayout} from './Layout'
 
 /**
  * Render page layout for public pages (/login, /register)
@@ -13,7 +13,7 @@ const renderPublicPage: FC = ({ children }) => {
  * Render page layout for private pages (/events, /profile...)
  */
 const renderPrivatePage: FC = ({ children }) => {
-  return <div> {children} </div>
+  return <PrivateLayout> {children} </PrivateLayout>
 }
 
 /**

@@ -1,10 +1,20 @@
 import styled from 'styled-components'
-import { theme } from '../../assets/theme'
+import { theme } from '../assets/theme'
 
-export const Wrapper = styled.div`
+export const PublicWrapper = styled.div`
   display: flex;
   height: 100vh;
   justify-content: center;
+`
+export const PrivateWrapper = styled.div`
+  display: flex;
+  padding: 1.5rem 1rem;
+  flex-direction: column;
+  background-color: ${theme.color.background};
+
+  @media (min-width: ${theme.viewport.tablet}) {
+    padding: 2rem 3rem;
+  }
 `
 
 const Column = styled.div`
@@ -85,7 +95,7 @@ export const Divider = styled.div`
   background-color: ${theme.color.green};
 `
 
-export const Content = styled.div`
+export const PublicContent = styled.div`
   text-align: center;
   max-width: 500px;
   padding: 2rem;
@@ -94,4 +104,12 @@ export const Content = styled.div`
     text-align: left;
     width: 50%;
   }
+`
+
+export const PrivateContent = styled.div`
+  padding-top: 5rem;
+  min-height: 100vh;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 75rem;
 `

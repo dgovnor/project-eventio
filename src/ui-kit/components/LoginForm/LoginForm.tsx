@@ -6,7 +6,7 @@ import {Input} from '../Input'
 import { Text, Link } from '../Typography'
 import { UserContext } from '../../../store/user/UserContext'
 import { COLOR, SIZES , ACTIONS } from '../../../enums/constants'
-import { loginUser } from '../../../apiFactory/user/userApi'
+import { loginUser } from '../../../apiFactory/userApi'
 
 import { ROUTES } from '../../../enums/routes'
 import { FormStyle, StyledButton, ErrorMsg, SignUp } from './styled'

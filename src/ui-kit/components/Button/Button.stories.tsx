@@ -1,9 +1,7 @@
 import React from 'react'
-import {Button} from '../index'
-import {ButtonLink} from '../ButtonLink'
-import {RoundButton} from '../RoundButton'
-import {IconButton} from '../IconButton'
-import { COLOR, SIZES } from '../../../../enums/constants'
+import {Button, ButtonLink, IconButton} from './index'
+import {RoundButton} from './RoundButton'
+import { COLOR, SIZES } from '../../../enums/constants'
 
 export default {
   title: 'Button',

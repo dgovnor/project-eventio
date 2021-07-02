@@ -1,12 +1,11 @@
 import React, { FC, createContext, useReducer } from 'react'
-import { ACTIONS } from '../../enums/constants'
 import { User } from './type'
 import userReducer, {initialState} from './UserReducer'
 
 
 const UserContext = createContext<{
   state: User
-  dispatch: React.Dispatch<{user:User, type:ACTIONS,}>
+  dispatch: React.Dispatch<any>
 }>({
   state: initialState,
   dispatch: () => null,
