@@ -1,15 +1,18 @@
 import React, { FC } from 'react'
-import { Logo } from '../../components/Logo'
-import { Text, Link } from '../../components/Typography'
+import { Header } from '../../pages/Events/Header'
+import { Logo } from '../components/Logo'
+import { Text, Link } from '../components/Typography'
 import {
-  Wrapper,
+  PublicWrapper,
+  PrivateWrapper,
   LeftSide,
   RightSide,
   SignUp,
   BottomText,
   Bottom,
   Divider,
-  Content,
+  PublicContent,
+  PrivateContent,
 } from './styled'
 
 /**
@@ -18,7 +21,7 @@ import {
  */
 export const PublicLayout: FC = ({ children }) => {
   return (
-    <Wrapper>
+    <PublicWrapper>
       <LeftSide>
         <Logo/>
         <Bottom>
@@ -38,10 +41,22 @@ export const PublicLayout: FC = ({ children }) => {
           {/**Just add sign up link*/}
           <Link href="#register"> SIGN UP</Link>
         </SignUp>
-        <Content>{children}</Content>
+        <PublicContent>{children}</PublicContent>
       </RightSide>
-    </Wrapper>
+    </PublicWrapper>
   )
 }
 
-PublicLayout.displayName = 'PublicLayout'
+
+/**
+ * Page layout for private pages - two row layout,
+ * header renders on top and content below
+ */
+export const PrivateLayout: FC = ({ children }) => {
+  return (
+    <PrivateWrapper>
+      <Header />
+      <PrivateContent>{children}</PrivateContent>
+    </PrivateWrapper>
+  )
+}

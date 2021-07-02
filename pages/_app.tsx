@@ -1,5 +1,5 @@
 import React, { Suspense } from 'react'
-import PageLoginManager from '../src/ui-kit/components/PageLoginManager'
+import {AppGuard} from '../src/ui-kit/components/AppGuard'
 import { UserProvider } from '../src/store/user/UserContext'
 import {PageLoader} from '../src/ui-kit/components/PageLoader/PageLoader'
 import App from 'next/app'
@@ -11,11 +11,11 @@ class MyApp extends App {
 
     return (
       <UserProvider>
-        <PageLoginManager>
+        <AppGuard>
           <Suspense fallback={<PageLoader />}>
             <Component {...pageProps} />
           </Suspense>
-        </PageLoginManager>
+        </AppGuard>
       </UserProvider>
     )
   }
