@@ -1,4 +1,7 @@
-export const getInitials = (name:string) => {
+export const getInitials = (name: string) => {
+  if (!name) {
+    return ''
+  }
     let initials = '';
     const nameSplit = name.split(' ');
     const nameLength = nameSplit.length;

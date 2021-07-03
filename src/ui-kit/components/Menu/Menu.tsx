@@ -30,7 +30,7 @@ export const Menu:FC<MenuProps> = ({name, children}) => {
 
     return (
         <MenuWrapper>
-          <ButtonLink type="button" onClick={() => setOpenMenu(!openMenu)}>
+          <ButtonLink id='buttonType' type="button" onClick={() => setOpenMenu(!openMenu)}>
             <UserName>{name}</UserName>
             <Icon src="/icons/dropdown.svg" />
           </ButtonLink>
