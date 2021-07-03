@@ -32,7 +32,7 @@ export const refreshToken = async (token: string) => {
         const response = await axios({
             method: 'post',
             url: `${SETTINGS.API_URL}/${URLs.AUTH}`,
-            data: token,
+            data: {refreshToken:token},
             headers: simpleAuthHeader
         })
         if (response.status === STATUS_CODE.OK) {

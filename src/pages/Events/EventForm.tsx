@@ -1,63 +1,48 @@
-import React, { useState } from 'react'
+import React, { FC, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { Title, Subtitle } from '../../ui-kit/components/Typography'
 import { Input } from '../../ui-kit/components/Input'
 import { format } from 'date-fns'
 import { StyledButton } from './styled'
+import { EventData } from '../../store/user/type'
 import { COLOR, SIZES } from '../../enums/constants'
 
 
-type FormData = {
-  title: string,
-  description: string,
-  date: string,
-  time: string,
-  capacity: number
+
+
+interface props{
+  onSubmit: (eventData: EventData) => void
 }
 
 /**
- * Form for creating new / editing event
+ * Form for creating new and editing event
+ * TODO: add default values to useForm to enable editing form
  */
-export const EventForm = () => {
+export const EventForm:FC<props> = ({onSubmit}) => {
   const { register, handleSubmit, formState: { errors } } = useForm()
   const [loading, setLoading] = useState(false)
 
-  const getTodayDate = format(new Date(), 'DD MMM YYYY')
+  const getTodayDate = format(new Date(), 'yyyy-MM-dd')
 
-  const onSubmit = async (data: FormData) => {
+  const handleFormSubmit = async (data: EventData) => {
     setLoading(true)
-    console.log(data)
-    // try {
-    //   const event = await createEvent({
-    //     title: data.title,
-    //     description: data.description,
-    //     startsAt: createDateFormat(data.date, data.time),
-    //     capacity: data.capacity,
-    //   })
-
-    //   if (event) {
-    //     onCreateEvent(event)
-    //   }
-
-    // } catch {
-    // } finally {
-    //   setLoading(false)
-    // }
+    onSubmit(data)
+    setLoading(false)
   }
 
   return (
     <>
       <Title>Create new event</Title>
-      <Subtitle>Enter detail below.</Subtitle>
+      <Subtitle>Enter details below.</Subtitle>
 
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(handleFormSubmit)}>
         <Input
           type="text"
           id="name"
           placeholder="Title"
           {...register('title', { required: true })}
           hasError={errors.title}
-          errorMsg="Title cannot be empty"
+          errorMsg="Title has to be filled up"
         />
 
 
@@ -67,7 +52,7 @@ export const EventForm = () => {
           placeholder="Description"
           {...register('description', { required: true })}
           hasError={errors.description}
-          errorMsg="Description cannot be empty"
+          errorMsg="Description has to be filled up"
         />
 
         
@@ -78,7 +63,7 @@ export const EventForm = () => {
               placeholder="Date"
               {...register('date',{ required: true })}
               hasError={errors.date}
-              errorMsg="Date cannot be empty"
+              errorMsg="Date has to be filled up"
             />
 
             <Input
@@ -87,7 +72,7 @@ export const EventForm = () => {
               placeholder="Time"
               {...register('time',{ required: true })}
               hasError={errors.time}
-              errorMsg="Time cannot be empty"
+              errorMsg="Time has to be filled up"
             />
 
         

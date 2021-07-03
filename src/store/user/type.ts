@@ -21,5 +21,19 @@ export type Event = {
   owner: User,
   _id?: string,
 }
+
+export type EventData = {
+  title: string,
+  description: string,
+  date: string,
+  time: string,
+  capacity: number
+}
+export type NewEventData = {
+  title: string,
+  description: string,
+  startsAt: Date,
+  capacity: number
+}
 export type FILTER_KEYS = keyof typeof FILTER
 export type FILTER_VALUES = typeof FILTER[FILTER_KEYS]

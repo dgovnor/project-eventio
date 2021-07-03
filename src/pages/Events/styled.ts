@@ -5,6 +5,7 @@ import {Button} from '../../ui-kit/components/Button'
 export const StyledButton = styled(Button)`
   display: inline-block;
   margin-top: 2rem;
+  font-weight: 600 ;
 `
 export const Content = styled.div`
   margin: 0 auto;
