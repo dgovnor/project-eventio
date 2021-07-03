@@ -19,7 +19,6 @@ const UserStatus = {
 interface Props {
   data: Event,
   type: string,
-  isLoading: boolean,
   onHandleJoin: (eventId:string) => void,
   onHandleLeave: (eventId:string) => void
 }
@@ -27,7 +26,7 @@ interface Props {
 /**
  * Event card 
  */
-export const EventCard: FC<Props> = ({ data, isLoading, onHandleJoin, onHandleLeave, type }) => {
+export const EventCard: FC<Props> = ({ data, onHandleJoin, onHandleLeave, type }) => {
   const [eventStatus, setEventStatus] = useState(UserStatus.Joined)
   const [event, setEvent] = useState(data)
   const {state:{id}} = useContext(UserContext)
@@ -44,6 +43,9 @@ export const EventCard: FC<Props> = ({ data, isLoading, onHandleJoin, onHandleLe
         break;
     }
   };
+  useEffect(() => {
+    setEvent(data)
+  }, [data])
 
   const {
     id: eventId,
@@ -79,10 +81,6 @@ export const EventCard: FC<Props> = ({ data, isLoading, onHandleJoin, onHandleLe
 
       //update event status
       setEventStatus(UserStatus.Left)
-
-      
-        //update event data
-        setEvent(event)
       
     } else if (eventStatus === UserStatus.Left) {
       //want to leave event
@@ -90,10 +88,6 @@ export const EventCard: FC<Props> = ({ data, isLoading, onHandleJoin, onHandleLe
 
       //update event status
       setEventStatus(UserStatus.Joined)
-
-      
-        //update event data
-        setEvent(event) 
     }
   }
 
@@ -123,7 +117,6 @@ export const EventCard: FC<Props> = ({ data, isLoading, onHandleJoin, onHandleLe
 
         <Button
           disabled={disableButton || fullCapacity}
-          isLoading={isLoading}
           size={SIZES.SMALL}
           color={ButtonColors()}
           type="button"
