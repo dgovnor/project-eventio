@@ -98,11 +98,11 @@ export const Divider = styled.div`
 export const PublicContent = styled.div`
   text-align: center;
   max-width: 500px;
-  padding: 2rem;
 
   @media (min-width: ${theme.viewport.tablet}) {
     text-align: left;
     width: 50%;
+    margin-left: -8.6rem;
   }
 `
 

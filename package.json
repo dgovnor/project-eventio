@@ -9,6 +9,7 @@
     "test": "jest",
     "lint": "next lint",
     "lint:js": "eslint --ext .js,.ts,.tsx . --ignore-path .gitignore --fix",
+    "lint:fix": "eslint . --fix --quiet --ext .js,.ts,.tsx",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public"
   },

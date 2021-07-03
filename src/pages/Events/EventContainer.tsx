@@ -68,7 +68,6 @@ export const EventContainer = () => {
                 <Events
                     onHandleJoin={handleJoin}
                     events={events}
-                    isLoading={false}
                     onSubmit={handleSubmit}
                     eventLoading={loading}
                     onHandleLeave={handleLeave}
