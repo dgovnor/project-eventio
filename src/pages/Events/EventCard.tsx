@@ -1,13 +1,18 @@
-import React, {  useState, useEffect, FC, SyntheticEvent, useContext } from 'react'
-import {Button} from '../../ui-kit/components/Button'
+import React, {
+  useState,
+  useEffect,
+  FC,
+  SyntheticEvent,
+  useContext,
+} from 'react'
+import { Button } from '../../ui-kit/components/Button'
 import { Card, Item } from './styled'
 import Link from 'next/link'
 import { ROUTES } from '../../enums/routes'
 import { format } from 'date-fns'
-import {Event} from '../../store/user/type'
+import { Event } from '../../store/user/type'
 import { COLOR, SIZES } from '../../enums/constants'
 import { UserContext } from '../../store/user/UserContext'
-
 
 const UserStatus = {
   Joined: 'JOIN',
@@ -15,34 +20,40 @@ const UserStatus = {
   Owner: 'EDIT',
 }
 
-
 interface Props {
-  data: Event,
-  type: string,
-  onHandleJoin: (eventId:string) => void,
-  onHandleLeave: (eventId:string) => void
+  data: Event
+  type: string
+  onHandleJoin: (eventId: string) => void
+  onHandleLeave: (eventId: string) => void
 }
 
 /**
- * Event card 
+ * Event card
  */
-export const EventCard: FC<Props> = ({ data, onHandleJoin, onHandleLeave, type }) => {
+export const EventCard: FC<Props> = ({
+  data,
+  onHandleJoin,
+  onHandleLeave,
+  type,
+}) => {
   const [eventStatus, setEventStatus] = useState(UserStatus.Joined)
   const [event, setEvent] = useState(data)
-  const {state:{id}} = useContext(UserContext)
- 
+  const {
+    state: { id },
+  } = useContext(UserContext)
+
   const ButtonColors = () => {
     switch (eventStatus) {
       case UserStatus.Joined:
-        return COLOR.PRIMARY;
+        return COLOR.PRIMARY
       case UserStatus.Left:
-        return COLOR.SECONDARY;
+        return COLOR.SECONDARY
       case UserStatus.Owner:
-        return COLOR.NORMAL;
+        return COLOR.NORMAL
       default:
-        break;
+        break
     }
-  };
+  }
   useEffect(() => {
     setEvent(data)
   }, [data])
@@ -64,7 +75,7 @@ export const EventCard: FC<Props> = ({ data, onHandleJoin, onHandleLeave, type }
     } else if (attendees.find((attendee) => attendee.id === id)) {
       //logged in user in an event
       setEventStatus(UserStatus.Left)
-    } 
+    }
   }, [id, attendees, ownerId])
 
   /**
@@ -81,7 +92,6 @@ export const EventCard: FC<Props> = ({ data, onHandleJoin, onHandleLeave, type }
 
       //update event status
       setEventStatus(UserStatus.Left)
-      
     } else if (eventStatus === UserStatus.Left) {
       //want to leave event
       onHandleLeave(eventId)
@@ -112,7 +122,9 @@ export const EventCard: FC<Props> = ({ data, onHandleJoin, onHandleLeave, type }
         <Item className="createdBy">
           {firstName} {lastName}
         </Item>
-        <Item className="date">{format(eventDate, "MMM dd yyyy - h mm a")}</Item>
+        <Item className="date">
+          {format(eventDate, 'MMM dd yyyy - h mm a')}
+        </Item>
         <Item className="assignees">{`${attendees.length} of ${capacity}`}</Item>
 
         <Button

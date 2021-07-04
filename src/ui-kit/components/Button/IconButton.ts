@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import {ButtonLink} from './ButtonLink'
+import { ButtonLink } from './ButtonLink'
 import { theme } from '../../assets/theme'
 
 export const IconButton = styled(ButtonLink)`
@@ -11,6 +11,6 @@ export const IconButton = styled(ButtonLink)`
 
   &:hover {
     filter: brightness(20%);
-}
+  }
 `
 IconButton.displayName = 'IconButton'

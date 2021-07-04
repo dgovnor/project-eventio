@@ -8,7 +8,7 @@ export const Button = styled.button<ButtonProps>`
   font-size: 12px;
   color: ${(props) => (props.isActive ? theme.color.dark : '#A9AEB4')};
   letter-spacing: 1px;
-  font-family: Hind bold;
+  font-family: Hind semiBold;
   text-transform: uppercase;
   transition: ${theme.transition.fast};
 

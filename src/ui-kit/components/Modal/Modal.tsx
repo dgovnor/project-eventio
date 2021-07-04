@@ -1,5 +1,5 @@
-import React, {  FC, useEffect } from 'react'
-import {Logo} from '../Logo'
+import React, { FC, useEffect } from 'react'
+import { Logo } from '../Logo'
 import { Wrapper, Header, Content, Button, Icon, Text } from './styled'
 
 type Props = {
@@ -7,7 +7,7 @@ type Props = {
 }
 
 /**
- * Modal 
+ * Modal
  * Overlays on the view below and doesn't scroll
  */
 export const Modal: FC<Props> = ({ children, onClose }) => {
@@ -19,7 +19,6 @@ export const Modal: FC<Props> = ({ children, onClose }) => {
       document.body.style.overflow = 'unset'
     }
   }, [])
-
 
   return (
     <Wrapper>

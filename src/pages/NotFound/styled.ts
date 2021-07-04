@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import {Button} from '../../ui-kit/components/Button'
+import { Button } from '../../ui-kit/components/Button'
 import { Subtitle } from '../../ui-kit/components/Typography'
 import { theme } from '../../ui-kit/assets/theme'
 
@@ -12,7 +12,6 @@ export const Text = styled(Subtitle)`
   margin-top: 1rem;
 
   @media (min-width: ${theme.viewport.tablet}) {
-    
   }
 `
 

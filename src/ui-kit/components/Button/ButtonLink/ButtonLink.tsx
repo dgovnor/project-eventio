@@ -2,7 +2,7 @@ import React, { FC, ButtonHTMLAttributes } from 'react'
 import { Button } from './styled'
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  isActive?: boolean,
+  isActive?: boolean
   iconUrl?: string
 }
 

@@ -1,8 +1,8 @@
 export enum TOKEN {
-  AUTH_TOKEN= 'authorization-token',
-  REFRESH_TOKEN='refresh-token',
+  AUTH_TOKEN = 'authorization-token',
+  REFRESH_TOKEN = 'refresh-token',
 }
-  
+
 export enum ACTIONS {
   LOGIN,
   LOGOUT,
@@ -11,18 +11,18 @@ export enum ACTIONS {
 export enum COLOR {
   PRIMARY = '#22D486',
   SECONDARY = '#F02C7A',
-  NORMAL = '#C9CED3',
-  THIRD = '#323C46'
+  NORMAL = '#D9DCE1',
+  THIRD = '#323C46',
 }
 
 export enum SIZES {
   BIG,
-  SMALL
+  SMALL,
 }
 
 export enum URLs {
   AUTH = 'auth/native',
-  EVENTS= 'events',
+  EVENTS = 'events',
 }
 
 export enum STATUS_CODE {

@@ -1,5 +1,5 @@
 import { User } from './type'
-import { storeRefreshToken , storeAuthToken } from '../../utils/authToken'
+import { storeRefreshToken, storeAuthToken } from '../../utils/authToken'
 import { ACTIONS } from '../../enums/constants'
 
 export const initialState: User = {

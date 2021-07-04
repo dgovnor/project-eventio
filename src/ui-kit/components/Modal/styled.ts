@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { theme } from '../../assets/theme'
-import {ButtonLink} from '../Button'
+import { ButtonLink } from '../Button'
 
 export const Wrapper = styled.div`
   box-sizing: border-box;

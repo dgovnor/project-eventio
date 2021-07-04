@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import {Button} from '../Button'
+import { Button } from '../Button'
 import { theme } from '../../assets/theme'
 
 export const FormStyle = styled.form`
@@ -12,6 +12,7 @@ export const StyledButton = styled(Button)`
 
 export const ErrorMsg = styled.div`
   margin-top: 0.5rem;
+  font-family: Hind;
   color: ${theme.color.violetRed};
 `
 export const SignUp = styled.div`

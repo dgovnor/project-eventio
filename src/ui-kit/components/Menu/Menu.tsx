@@ -1,12 +1,7 @@
-import React, {useState, useRef, FC } from 'react'
+import React, { useState, useRef, FC } from 'react'
 
-import {
-  MenuWrapper,
-  Icon,
-  Dropdown,
-  UserName,
-} from './styled'
-import {ButtonLink} from '../Button'
+import { MenuWrapper, Icon, Dropdown, UserName } from './styled'
+import { ButtonLink } from '../Button'
 import { useOuterClick } from '../../../utils/useOuterClick'
 
 /**
@@ -14,35 +9,33 @@ import { useOuterClick } from '../../../utils/useOuterClick'
  * @function
  */
 
-interface MenuProps{
-    name: string
-
+interface MenuProps {
+  name: string
 }
-export const Menu:FC<MenuProps> = ({name, children}) => {
+export const Menu: FC<MenuProps> = ({ name, children }) => {
   const [openMenu, setOpenMenu] = useState(false)
-    const dropdownRef = useRef<HTMLDivElement>(null)
-    
-    useOuterClick(dropdownRef, () => {
-        if (openMenu) {
-            setOpenMenu(false)
-        }
-    })
+  const dropdownRef = useRef<HTMLDivElement>(null)
 
-    return (
-        <MenuWrapper>
-          <ButtonLink id='buttonType' type="button" onClick={() => setOpenMenu(!openMenu)}>
-            <UserName>{name}</UserName>
-            <Icon src="/icons/dropdown.svg" />
-          </ButtonLink>
+  useOuterClick(dropdownRef, () => {
+    if (openMenu) {
+      setOpenMenu(false)
+    }
+  })
 
-          {openMenu && (
-            <Dropdown ref={dropdownRef}>
-              {children}
-            </Dropdown>
-          )}
-        </MenuWrapper>
-    )
+  return (
+    <MenuWrapper>
+      <ButtonLink
+        id="buttonType"
+        type="button"
+        onClick={() => setOpenMenu(!openMenu)}
+      >
+        <UserName>{name}</UserName>
+        <Icon src="/icons/dropdown.svg" />
+      </ButtonLink>
 
+      {openMenu && <Dropdown ref={dropdownRef}>{children}</Dropdown>}
+    </MenuWrapper>
+  )
 }
 
 Menu.displayName = 'Menu'
