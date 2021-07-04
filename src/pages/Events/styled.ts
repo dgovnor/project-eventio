@@ -53,7 +53,6 @@ export const Card = styled.div`
 `
 
 export const Item = styled.div`
-  // TODO: Make Item styled component reuseable
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;

@@ -12,7 +12,8 @@
     "lint:js": "eslint --ext .js,.ts,.tsx . --ignore-path .gitignore --fix",
     "prettier-format": "prettier --parser typescript --write \"**/*.js\"",
     "storybook": "start-storybook -p 6006 -s public",
-    "build-storybook": "build-storybook -s public"
+    "build-storybook": "build-storybook -s public",
+    "prepare": "husky install"
   },
   "jest": {
     "setupFilesAfterEnv": [
@@ -20,11 +21,7 @@
     ],
     "testEnvironment": "enzyme"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "yarn run prettier-format && yarn run stylelint && yarn run test && git add ."
-    }
-  },
+  
   "dependencies": {
     "@types/axios": "^0.14.0",
     "axios": "^0.21.1",
@@ -61,7 +58,7 @@
     "eslint": "7.13.0",
     "eslint-config-next": "11.0.1",
     "eslint-config-prettier": "^8.3.0",
-    "husky": "^6.0.0",
+    "husky": "^7.0.0",
     "jest-environment-enzyme": "^7.1.2",
     "jest-enzyme": "^7.1.2",
     "prettier": "2.3.2",

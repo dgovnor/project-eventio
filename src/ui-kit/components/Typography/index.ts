@@ -34,7 +34,8 @@ export const Subtitle = styled.span`
 export const Link = styled.a`
   color: ${theme.color.normal};
   font-size: ${theme.fontSize.normal};
-  font-family: Hind semiBold;
+  font-family: Hind medium;
+  font-weight: 600;
   text-decoration: none;
   text-transform: uppercase;
   &:hover {
