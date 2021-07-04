@@ -21,14 +21,14 @@ export const transformEventData = (data: Event): Event => {
       id: data.owner.id || '',
       firstName: data.owner.firstName || '',
       lastName: data.owner.lastName || '',
-      email: data.owner.email || ''
+      email: data.owner.email || '',
     },
     attendees: data.attendees.map((attendee: User) => {
-      return { 
+      return {
         id: attendee._id || '',
         firstName: attendee.firstName || '',
         lastName: attendee.lastName || '',
-        email: attendee.email || ''
+        email: attendee.email || '',
       }
     }),
   }
@@ -42,4 +42,3 @@ export const transformUserData = (data: User) => {
     email: data.email || '',
   }
 }
-

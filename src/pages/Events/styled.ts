@@ -1,10 +1,11 @@
 import styled from 'styled-components'
-import {theme} from '../../ui-kit/assets/theme'
-import {Button} from '../../ui-kit/components/Button'
+import { theme } from '../../ui-kit/assets/theme'
+import { Button } from '../../ui-kit/components/Button'
 
 export const StyledButton = styled(Button)`
   display: inline-block;
   margin-top: 2rem;
+  font-weight: 600;
 `
 export const Content = styled.div`
   margin: 0 auto;
@@ -18,9 +19,11 @@ export const EventsActions = styled.div`
 
 export const List = styled.div`
   display: flex;
-  flex-wrap: ${(props: {type: string}) => (props.type === 'list' ? 'no-wrap' : 'wrap')};
+  flex-wrap: ${(props: { type: string }) =>
+    props.type === 'list' ? 'no-wrap' : 'wrap'};
   justify-content: space-between;
-  flex-direction: ${(props: {type: string}) => (props.type === 'list' ? 'column' : 'row')};
+  flex-direction: ${(props: { type: string }) =>
+    props.type === 'list' ? 'column' : 'row'};
 `
 export const Card = styled.div`
   margin: 0.5rem 0;
@@ -33,8 +36,10 @@ export const Card = styled.div`
   justify-content: space-between;
   align-items: center;
   transition: ${theme.transition.slower};
-  width: ${(props: {type: string}) => (props.type === 'list' ? 'unset' : '30%')};
-  flex-direction: ${(props: {type: string}) => (props.type === 'list' ? 'row' : 'column')};
+  width: ${(props: { type: string }) =>
+    props.type === 'list' ? 'unset' : '30%'};
+  flex-direction: ${(props: { type: string }) =>
+    props.type === 'list' ? 'row' : 'column'};
   flex-wrap: wrap;
 
   &:hover {
@@ -48,12 +53,12 @@ export const Card = styled.div`
 `
 
 export const Item = styled.div`
-// TODO: Make Item styled component reuseable 
+  // TODO: Make Item styled component reuseable
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 
-  &.title{
+  &.title {
     color: ${theme.color.dark};
     font-size: 1.125rem;
     width: 80%;
@@ -61,9 +66,8 @@ export const Item = styled.div`
     @media (min-width: ${theme.viewport.tablet}) {
       width: 20%;
     }
-
   }
-  &.description{
+  &.description {
     font-size: ${theme.fontSize.normal};
     color: ${theme.color.light};
     width: 80%;
@@ -71,10 +75,9 @@ export const Item = styled.div`
     @media (min-width: ${theme.viewport.tablet}) {
       width: 20%;
     }
-
   }
 
-  &.createdBy{
+  &.createdBy {
     font-size: ${theme.fontSize.small};
     color: #7d7878;
     display: none;
@@ -82,10 +85,9 @@ export const Item = styled.div`
     @media (min-width: ${theme.viewport.tablet}) {
       display: block;
     }
-
   }
-  
-  &.date{
+
+  &.date {
     font-size: ${theme.fontSize.small};
     color: #cacdd0;
     width: 60%;
@@ -93,10 +95,9 @@ export const Item = styled.div`
     @media (min-width: ${theme.viewport.tablet}) {
       width: 20%;
     }
-
   }
 
-  &.assignees{
+  &.assignees {
     font-size: ${theme.fontSize.small};
     color: ${theme.color.light};
     width: 60%;
@@ -104,6 +105,5 @@ export const Item = styled.div`
     @media (min-width: ${theme.viewport.tablet}) {
       width: 10%;
     }
-
   }
 `

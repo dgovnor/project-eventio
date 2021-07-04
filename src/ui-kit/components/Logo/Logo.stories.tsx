@@ -1,5 +1,5 @@
 import React from 'react'
-import {Logo }from './index'
+import { Logo } from './index'
 import { UserContext } from '../../../store/user/UserContext'
 import { Story } from '@storybook/react'
 
@@ -15,9 +15,9 @@ export default {
               firstName: 'Jude',
               lastName: 'Ezekiel',
               email: 'jude@strv.com',
-              isLogged: true
+              isLogged: true,
             },
-            dispatch: () => {}
+            dispatch: () => {},
           }}
         >
           <StoryFn />

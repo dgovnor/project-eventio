@@ -1,8 +1,8 @@
 import React, { useEffect, useContext, useState, FC } from 'react'
 import { getRefreshToken } from '../../../utils/authToken'
-import {refreshToken} from '../../../apiFactory/userApi'
+import { refreshToken } from '../../../apiFactory/userApi'
 import { UserContext } from '../../../store/user/UserContext'
-import {PageLoader} from '../PageLoader/PageLoader'
+import { PageLoader } from '../PageLoader/PageLoader'
 import { ACTIONS } from '../../../enums/constants'
 
 /**
@@ -21,9 +21,9 @@ export const AppGuard: FC = ({ children }) => {
   const token = getRefreshToken()
 
   useEffect(() => {
-    const fetchLogin =  async() => {
+    const fetchLogin = async () => {
       if (token) {
-       const data = await refreshToken(token)
+        const data = await refreshToken(token)
 
         dispatch({ type: ACTIONS.LOGIN, user: data })
       }

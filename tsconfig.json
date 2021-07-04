@@ -15,6 +15,6 @@
     "jsx": "preserve"
   },
   "compileOnSave": true,
-  "include": ["src", "/pages", ".prettierrc.js" ],
-  "exclude": ["node_modules","next-env.d.ts"]
+  "include": ["src", "./pages/**/*", ".prettierrc.js" ],
+  "exclude": ["node_modules", "next-env.d.ts"]
 }

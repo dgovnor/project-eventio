@@ -1,18 +1,20 @@
 // eslint-disable-next-line import/named
 import styled from 'styled-components'
+import { COLOR } from '../../../enums/constants'
 import { theme } from '../../assets/theme'
 
 const Button = styled.button`
   display: block;
   font-size: ${theme.fontSize.small};
-  background-color: ${(props: {color: string}) => props.color};
-  color: ${theme.color.white};
+  background-color: ${(props: { color: string }) => props.color};
+  color: ${(props) => props.color === COLOR.NORMAL ? '#A9AEB4' : theme.color.white };
+  font-family: Hind semiBold;
   border: none;
   cursor: pointer;
   border-radius: 0.25rem;
   text-transform: uppercase;
   transition: ${theme.transition.fast};
-  
+
   &:hover {
     filter: ${(props) =>
       props.disabled ? 'brightness(100%)' : 'brightness(85%)'};
@@ -21,7 +23,6 @@ const Button = styled.button`
   &:focus {
     outline: 0;
   }
-
 `
 
 export const BigButton = styled(Button)`

@@ -14,8 +14,9 @@ export const Title = styled.span`
 `
 
 export const Text = styled.span`
-font-size: ${theme.fontSize.normal};
-color: ${theme.color.normal};
+  font-size: ${theme.fontSize.normal};
+  font-family: Hind medium;
+  color: ${theme.color.normal};
 `
 
 export const Subtitle = styled.span`
@@ -31,9 +32,9 @@ export const Subtitle = styled.span`
 `
 
 export const Link = styled.a`
-  color: ${theme.color.dark};
+  color: ${theme.color.normal};
   font-size: ${theme.fontSize.normal};
-  font-family: Hind bold;
+  font-family: Hind semiBold;
   text-decoration: none;
   text-transform: uppercase;
   &:hover {
