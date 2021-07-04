@@ -6,7 +6,7 @@ import { theme } from '../../assets/theme'
 const Button = styled.button`
   display: block;
   font-size: ${theme.fontSize.small};
-  background-color: ${(props: { color: string }) => props.color};
+  background-color: ${(props: { color?: string }) => props.color};
   color: ${(props) => props.color === COLOR.NORMAL ? '#A9AEB4' : theme.color.white };
   font-family: Hind semiBold;
   border: none;
