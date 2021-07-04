@@ -1,6 +1,6 @@
 import React, { useContext, FC } from 'react'
 import { UserContext } from '../../store/user/UserContext'
-import{ PublicLayout, PrivateLayout} from './Layout'
+import { PublicLayout, PrivateLayout } from './Layout'
 
 /**
  * Render page layout for public pages (/login, /register)

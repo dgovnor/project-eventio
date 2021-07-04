@@ -1,5 +1,5 @@
 import React from 'react'
-import {PageLoader} from './PageLoader'
+import { PageLoader } from './PageLoader'
 
 export default {
   title: 'Page Loader',
@@ -7,5 +7,5 @@ export default {
 }
 
 export const Default = () => {
- return <PageLoader />
+  return <PageLoader />
 }

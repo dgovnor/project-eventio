@@ -6,11 +6,10 @@ import { Wrapper } from './styled'
 /**
  * Avatar shows the initials of the user
  */
-interface AvatarProps{
+interface AvatarProps {
   name: string
 }
-export const Avatar:FC<AvatarProps> = ({name}) => {
-
+export const Avatar: FC<AvatarProps> = ({ name }) => {
   return <Wrapper>{getInitials(name)}</Wrapper>
 }
 

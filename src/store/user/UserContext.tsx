@@ -1,7 +1,6 @@
 import React, { FC, createContext, useReducer } from 'react'
 import { User } from './type'
-import userReducer, {initialState} from './UserReducer'
-
+import userReducer, { initialState } from './UserReducer'
 
 const UserContext = createContext<{
   state: User

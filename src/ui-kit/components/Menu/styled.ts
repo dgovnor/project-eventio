@@ -5,7 +5,7 @@ export const MenuWrapper = styled.div`
   font-size: ${theme.fontSize.small};
   color: ${theme.color.light};
   position: relative;
-  
+
   @media (min-width: ${theme.viewport.tablet}) {
     margin-left: 0.5rem;
   }

@@ -23,7 +23,7 @@ export const PublicLayout: FC = ({ children }) => {
   return (
     <PublicWrapper>
       <LeftSide>
-        <Logo/>
+        <Logo />
         <Bottom>
           <BottomText>
             “Great, kid.Don’t <br />
@@ -46,7 +46,6 @@ export const PublicLayout: FC = ({ children }) => {
     </PublicWrapper>
   )
 }
-
 
 /**
  * Page layout for private pages - two row layout,

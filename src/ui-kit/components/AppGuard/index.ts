@@ -1,1 +1,1 @@
-export  {AppGuard} from './AppGuard'
+export { AppGuard } from './AppGuard'

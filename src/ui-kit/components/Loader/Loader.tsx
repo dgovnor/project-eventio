@@ -7,7 +7,7 @@ import { Spinner } from './styled'
  * @function
  */
 export const Loader = () => {
-  return <Spinner src="/icons/spinner.svg" alt='spinner'/>
+  return <Spinner src="/icons/spinner.svg" alt="spinner" />
 }
 
 Loader.displayName = 'Loader'

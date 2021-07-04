@@ -1,1 +1,1 @@
-export {EventContainer} from './EventContainer'
+export { EventContainer } from './EventContainer'

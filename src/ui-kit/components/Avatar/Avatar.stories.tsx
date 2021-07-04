@@ -1,9 +1,9 @@
 import React from 'react'
-import {Avatar} from './index'
+import { Avatar } from './index'
 
 export default {
   title: 'Avatar',
-  component: Avatar
+  component: Avatar,
 }
 
-export const Default = () => <Avatar name='Jude Ezekiel' />
+export const Default = () => <Avatar name="Jude Ezekiel" />

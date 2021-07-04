@@ -7,9 +7,10 @@
     "build": "next build",
     "start": "next start",
     "test": "jest",
+    "stylelint": "stylelint 'src/**/*.{js,ts,tsx}'",
     "lint": "next lint",
     "lint:js": "eslint --ext .js,.ts,.tsx . --ignore-path .gitignore --fix",
-    "lint:fix": "eslint . --fix --quiet --ext .js,.ts,.tsx",
+    "prettier-format": "prettier --parser typescript --write \"**/*.js\"",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public"
   },
@@ -21,7 +22,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run prettier-format && npm run stylelint && npm run test && git add ."
+      "pre-commit": "yarn run prettier-format && yarn run stylelint && yarn run test && git add ."
     }
   },
   "dependencies": {
