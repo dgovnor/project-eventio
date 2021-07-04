@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  font-family: 'Hind', 'Playfair', sans-serif;
+  font-family: 'Hind', 'Playfair', 'Hind Light', 'Hind Bold', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -14,7 +14,7 @@ body {
 }
 
 @font-face {
-  font-family: 'Hind light';
+  font-family: 'Hind Light';
   src: 
     url(./ui-kit/assets/fonts/Hind-Light.ttf) format('truetype');
   font-style: normal;
@@ -28,13 +28,6 @@ body {
   font-weight: 500;
 }
 
-@font-face {
-  font-family: 'Hind semiBold';
-  src:
-    url(./ui-kit/assets/fonts/Hind-SemiBold.ttf) format('truetype');
-  font-style: normal;
-  font-weight: 600;
-}
 @font-face {
   font-family: 'Hind Bold';
   src: 

@@ -8,7 +8,8 @@ const Button = styled.button`
   font-size: ${theme.fontSize.small};
   background-color: ${(props: { color?: string }) => props.color};
   color: ${(props) => props.color === COLOR.NORMAL ? '#A9AEB4' : theme.color.white };
-  font-family: Hind semiBold;
+  font-family: Hind medium;
+  font-weight: 600;
   border: none;
   cursor: pointer;
   border-radius: 0.25rem;

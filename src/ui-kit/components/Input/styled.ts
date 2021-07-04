@@ -36,6 +36,5 @@ export const Label = styled.span`
 export const ErrorMsg = styled.span`
   display: block;
   text-align: left;
-  /* margin-top: 0.25rem; */
   color: ${theme.color.violetRed};
 `

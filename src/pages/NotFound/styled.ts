@@ -10,9 +10,6 @@ export const StyledButton = styled(Button)`
 
 export const Text = styled(Subtitle)`
   margin-top: 1rem;
-
-  @media (min-width: ${theme.viewport.tablet}) {
-  }
 `
 
 export const Image = styled.img`
