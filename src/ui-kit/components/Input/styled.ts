@@ -7,6 +7,26 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
   hasError?: boolean
 }
 
+export const StyledInput = styled.div`
+  &.inputWithIcon {
+    position: relative;
+  }
+
+  .right-icon {
+    background:none;
+    border:none;
+    position: absolute;
+    cursor: pointer;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    svg {
+      fill: black;
+      transition: 0.3s;
+    }
+  }
+`
+
 export const CustomInput = styled.input.attrs((props: Props) => ({
   type: props.type,
 }))`

@@ -18,6 +18,7 @@ type FormData = {
 
 export const LoginForm = () => {
   const [loginError, setLoginError] = useState(false)
+  const [passwordShown, setPasswordShown] = useState(false);
   const {
     register,
     handleSubmit,
@@ -27,7 +28,7 @@ export const LoginForm = () => {
 
   const { dispatch } = useContext(UserContext)
 
-  /** Login User */
+  /** Login a User */
   const onSubmit = async (data: FormData) => {
     try {
       setLoginError(false)
@@ -43,7 +44,9 @@ export const LoginForm = () => {
       setLoading(false)
     }
   }
-
+  const handleToggle = () => {
+    setPasswordShown(!passwordShown)
+}
   return (
     <>
       {loginError && (
@@ -57,15 +60,16 @@ export const LoginForm = () => {
           type="email"
           id="email"
           placeholder="Email"
-          {...register('email', { required: true })}
           autocomplete="email"
           hasError={!!errors.email}
+          {...register('email',{ required: true })}
           errorMsg="Email is required"
         />
 
         <Input
-          type="password"
+          type={passwordShown ? "text" : "password"}
           id="password"
+          onToggle={handleToggle}
           placeholder="Password"
           {...register('password', { required: true })}
           autocomplete="current-password"
