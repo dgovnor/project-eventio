@@ -9,6 +9,7 @@ import {
   RightSide,
   SignUp,
   BottomText,
+  Image,
   Bottom,
   Divider,
   PublicContent,
@@ -41,6 +42,7 @@ export const PublicLayout: FC = ({ children }) => {
           {/**Just add sign up link*/}
           <Link href="#register"> SIGN UP</Link>
         </SignUp>
+        <Image src="/icons/logo-black.svg"/>
         <PublicContent>{children}</PublicContent>
       </RightSide>
     </PublicWrapper>

@@ -78,6 +78,7 @@ export const EventForm: FC<props> = ({ onSubmit }) => {
           type="number"
           id="capacity"
           placeholder="Capacity"
+          min={1}
           {...register('capacity', { required: true })}
           hasError={errors.capacity}
           errorMsg="Capacity has to be filled up"

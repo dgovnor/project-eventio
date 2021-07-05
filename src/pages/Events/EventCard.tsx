@@ -6,13 +6,14 @@ import React, {
   useContext,
 } from 'react'
 import { Button } from '../../ui-kit/components/Button'
-import { Card, Item } from './styled'
+import { ListView, GridView, FlexContainer, ListItem, GridItem } from './styled'
 import Link from 'next/link'
-import { ROUTES } from '../../enums/routes'
+// import { ROUTES } from '../../enums/routes'
 import { format } from 'date-fns'
 import { Event } from '../../store/user/type'
 import { COLOR, SIZES } from '../../enums/constants'
 import { UserContext } from '../../store/user/UserContext'
+// import { Image } from '../../ui-kit/components/Logo/styled'
 
 const UserStatus = {
   Joined: 'JOIN',
@@ -115,29 +116,63 @@ export const EventCard: FC<Props> = ({
     eventStatus === UserStatus.Joined && attendees.length === capacity
 
   return (
-    <Link href={`${ROUTES.EVENTS}/${eventId}`}>
-      <Card type={type}>
-        <Item className="title">{title}</Item>
-        <Item className="description">{description}</Item>
-        <Item className="createdBy">
-          {firstName} {lastName}
-        </Item>
-        <Item className="date">
-          {format(eventDate, 'MMM dd yyyy - h mm a')}
-        </Item>
-        <Item className="assignees">{`${attendees.length} of ${capacity}`}</Item>
+    <>
+      {type === 'list' && (
+        <Link href="#">
+          <ListView>
+            <ListItem className="title">{title}</ListItem>
+            <ListItem className="description">{description}</ListItem>
+            <ListItem className="createdBy">
+              {firstName} {lastName}
+            </ListItem>
+            <ListItem className="date">
+              {format(eventDate, 'MMM dd yyyy - h mm a')}
+            </ListItem>
+            <ListItem className="assignees">{`${attendees.length} of ${capacity}`}</ListItem>
 
-        <Button
-          disabled={disableButton || fullCapacity}
-          size={SIZES.SMALL}
-          color={ButtonColors()}
-          type="button"
-          onClick={eventAction}
-        >
-          {eventStatus}
-        </Button>
-      </Card>
-    </Link>
+            <Button
+              disabled={disableButton || fullCapacity}
+              size={SIZES.SMALL}
+              color={ButtonColors()}
+              type="button"
+              onClick={eventAction}
+            >
+              {eventStatus}
+            </Button>
+          </ListView>
+        </Link>
+      )}
+      {type === 'card' && (
+        <Link href="#">
+          <GridView>
+            <GridItem className="date">
+              {format(eventDate, 'MMM dd yyyy - h mm a')}
+            </GridItem>
+            <GridItem className="title">{title}</GridItem>
+            <GridItem className="createdBy">
+              {firstName} {lastName}
+            </GridItem>
+            <GridItem className="description">{description}</GridItem>
+            <FlexContainer className="justify">
+              <FlexContainer>
+                <img src="/icons/icon-user.svg" alt='icon-user' />
+              </FlexContainer>
+                <GridItem className="assignees">{`${attendees.length} of ${capacity}`}</GridItem>
+
+              <Button
+                disabled={disableButton || fullCapacity}
+                size={SIZES.SMALL}
+                color={ButtonColors()}
+                type="button"
+                onClick={eventAction}
+              >
+                {eventStatus}
+              </Button>
+            </FlexContainer>
+          </GridView>
+        </Link>
+      )}
+    </>
   )
 }
 

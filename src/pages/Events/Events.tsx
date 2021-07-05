@@ -15,6 +15,7 @@ import { NextPage } from 'next'
 import { PageLoader } from '../../ui-kit/components/PageLoader'
 import { Modal } from '../../ui-kit/components/Modal'
 import { EventForm } from './EventForm'
+import { PrivateRoute } from '../../routes'
 
 /** how you want to view events */
 const VIEW_MODE = {
@@ -95,6 +96,8 @@ export const Events: NextPage<EventsProps> = ({
   }
 
   return (
+    <PrivateRoute>
+      {() => (
     <Layout>
       <Content>
         <EventsActions>
@@ -173,5 +176,7 @@ export const Events: NextPage<EventsProps> = ({
         )}
       </Content>
     </Layout>
+    )}
+    </PrivateRoute>
   )
 }
