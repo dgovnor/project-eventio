@@ -97,11 +97,14 @@ export const Divider = styled.div`
 
 export const PublicContent = styled.div`
   text-align: center;
-  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  max-width: 240px;
 
   @media (min-width: ${theme.viewport.tablet}) {
     text-align: left;
     width: 50%;
+    max-width: 500px;
     margin-left: -8.6rem;
   }
 `
@@ -112,4 +115,12 @@ export const PrivateContent = styled.div`
   margin: 0 auto;
   width: 100%;
   max-width: 75rem;
+`
+export const Image = styled.img`
+    height: 26px;
+    align-self: flex-start;
+    margin-bottom: 40px;
+  @media (min-width: ${theme.viewport.tablet}) {
+    display: none;
+  }
 `

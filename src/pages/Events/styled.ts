@@ -25,7 +25,7 @@ export const List = styled.div`
   flex-direction: ${(props: { type: string }) =>
     props.type === 'list' ? 'column' : 'row'};
 `
-export const Card = styled.div`
+export const ListView = styled.div`
   margin: 0.5rem 0;
   padding: 1rem;
   background: ${theme.color.white};
@@ -36,10 +36,8 @@ export const Card = styled.div`
   justify-content: space-between;
   align-items: center;
   transition: ${theme.transition.slower};
-  width: ${(props: { type: string }) =>
-    props.type === 'list' ? 'unset' : '30%'};
-  flex-direction: ${(props: { type: string }) =>
-    props.type === 'list' ? 'row' : 'column'};
+  width: unset;
+  flex-direction: row;
   flex-wrap: wrap;
 
   &:hover {
@@ -51,8 +49,41 @@ export const Card = styled.div`
     flex-wrap: nowrap;
   }
 `
+export const GridView = styled.div`
+  margin: 0.5rem 0;
+  background: ${theme.color.white};
+  box-shadow: 0 0.125rem 0.1875rem 0 rgba(0, 0, 0, 0.11);
+  border-radius: 0.125rem;
+  letter-spacing: 0;
+  display: flex;
+  align-items: left;
+  justify-content: space-between;
+  transition: ${theme.transition.slower};
+  width: 100%;
+  flex-direction: column;
+  
 
-export const Item = styled.div`
+  &:hover {
+    cursor: pointer;
+    background: #fbfbfb;
+  }
+
+  @media (min-width: ${theme.viewport.tablet}) {
+  padding: 1rem;
+    flex-wrap: nowrap;
+    width: 30%
+  }
+`
+export const FlexContainer = styled.div`
+display: flex;
+&.justify{
+justify-content: space-between;
+padding: 0 0.5rem
+
+}
+`
+
+export const ListItem = styled.div`
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -105,4 +136,50 @@ export const Item = styled.div`
       width: 10%;
     }
   }
+`
+export const GridItem = styled.div`
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  &.title {
+    color: ${theme.color.dark};
+    font-size: 1.125rem;
+    padding: 0 0.5rem;
+    width: 80%;
+
+    
+  }
+  &.description {
+    font-size: ${theme.fontSize.normal};
+    color: ${theme.color.light};
+    padding:0.5rem;
+    width: 80%;
+  }
+
+  &.createdBy {
+    font-size: ${theme.fontSize.small};
+    color: #7d7878;
+    padding:0 0.5rem 0.5rem 0.5rem;
+    width:80%;
+
+  }
+
+  &.date {
+    font-size: ${theme.fontSize.small};
+    color: #cacdd0;
+    padding:0.5rem;
+    width: 60%;
+
+  }
+
+  &.assignees {
+    font-size: ${theme.fontSize.small};
+    color: ${theme.color.light};
+    padding: 0.5rem 0;
+    width: 60%;
+  };
+
+  @media (min-width: ${theme.viewport.tablet}) {
+    padding:2rem;
+    }
 `

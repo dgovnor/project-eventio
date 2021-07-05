@@ -3,21 +3,27 @@ import { Api } from './base'
 import { Event, NewEventData } from '../store/user/type'
 import { transformEventData } from './transformData'
 
-const api = Api()
+
+
 export const getAllEvents = async () => {
+  const api = Api() 
   try {
     const response = await api.get(URLs.EVENTS)
-    const events = response.data.map((event: Event) =>
+    if (response.status === STATUS_CODE.OK) {
+      const events = response.data.map((event: Event) =>
       transformEventData(event)
-    )
-
-    return events
+      )
+      return events
+      
+    }
+    
   } catch (error) {
     throw new Error(error)
   }
 }
 
 export const addNewEvent = async (data: NewEventData) => {
+  const api = Api()
   try {
     const response = await api.post(URLs.EVENTS, data)
     if (response.status === STATUS_CODE.CREATED) {
@@ -29,6 +35,7 @@ export const addNewEvent = async (data: NewEventData) => {
 }
 
 export const joinEvent = async (eventId: string) => {
+  const api = Api()
   try {
     const response = await api.post(`${URLs.EVENTS}/${eventId}/attendees/me`)
     if (response.status === STATUS_CODE.OK) {
@@ -39,6 +46,7 @@ export const joinEvent = async (eventId: string) => {
   }
 }
 export const leaveEvent = async (eventId: string) => {
+  const api = Api()
   try {
     const response = await api.delete(`${URLs.EVENTS}/${eventId}/attendees/me`)
     if (response.status === STATUS_CODE.OK) {
