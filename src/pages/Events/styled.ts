@@ -10,7 +10,12 @@ export const StyledButton = styled(Button)`
 export const Content = styled.div`
   margin: 0 auto;
 `
-
+export const MenuTitle = styled.span`
+  font-size: ${theme.fontSize.small};
+  font-family: Hind bold;
+  text-transform: uppercase;
+  color: ${theme.color.normal};
+`
 export const EventsActions = styled.div`
   display: flex;
   margin-bottom: 1rem;
