@@ -23,21 +23,22 @@ export const Icon = styled.img`
   }
 `
 export const UserName = styled.span`
-  display: none;
+  display: ${(props: { showNameInMobile?: boolean }) =>
+    props.showNameInMobile ? 'inline-block' : 'none'};
 
   @media (min-width: ${theme.viewport.tablet}) {
     display: inline-block;
   }
 `
+// This should be refactor to show dropdown at the top, bottom, left and right
 export const Dropdown = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   position: absolute;
   top: 1.5rem;
-  right: 0;
+  right: ${(props:{align?:boolean}) => props.align ? '' : 0 };
   width: 10rem;
-  height: 3rem;
   padding: 0.5rem;
   background: ${theme.color.white};
   box-shadow: 0 0.3125rem 0.9375rem 0 rgba(0, 0, 0, 0.2);

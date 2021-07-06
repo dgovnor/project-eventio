@@ -16,8 +16,7 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
  */
 export const Input = forwardRef<HTMLInputElement, Props>(
   ({ hasError, onToggle, errorMsg, label, fRef, ...rest }) => {
-    const togglePasswordVisibility = (e: any) => {
-      e.preventDefault()
+    const togglePasswordVisibility = () => {
       if (onToggle) {
         onToggle()
       }
@@ -29,9 +28,15 @@ export const Input = forwardRef<HTMLInputElement, Props>(
         <StyledInput className="inputWithIcon">
           <CustomInput hasError={hasError} ref={fRef} {...rest} />
           {rest.name === 'password' && (
-            <button className="right-icon" onClick={togglePasswordVisibility}>
+            <div
+              role="button"
+              tabIndex={0}
+              onKeyDown={() => null}
+              className="right-icon"
+              onClick={togglePasswordVisibility}
+            >
               <img src="/icons/show-icon.svg" alt="icon" />
-            </button>
+            </div>
           )}
         </StyledInput>
         {hasError && <ErrorMsg>{errorMsg}</ErrorMsg>}

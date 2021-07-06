@@ -1,21 +1,18 @@
-import React, { useState, useEffect, SyntheticEvent } from 'react'
+import React, { useState, SyntheticEvent, useEffect } from 'react'
 import { isPast, isFuture } from 'date-fns'
 
 import { EventCard } from './EventCard'
-import { FILTER } from '../../enums/constants'
 import Layout from '../../ui-kit/layouts'
 import { Content, EventsActions, List } from './styled'
-import {
-  ButtonLink,
-  IconButton,
-  RoundButton,
-} from '../../ui-kit/components/Button'
+import { IconButton, RoundButton } from '../../ui-kit/components/Button'
 import { Event, EventData, FILTER_VALUES } from '../../store/user/type'
 import { NextPage } from 'next'
+import { FILTER } from '../../enums/constants'
 import { PageLoader } from '../../ui-kit/components/PageLoader'
 import { Modal } from '../../ui-kit/components/Modal'
 import { EventForm } from './EventForm'
 import { PrivateRoute } from '../../routes'
+import { Actions } from './Actions'
 
 /** how you want to view events */
 const VIEW_MODE = {
@@ -39,25 +36,12 @@ export const Events: NextPage<EventsProps> = ({
   onHandleJoin,
   onHandleLeave,
 }) => {
-  const [filteredEvents, setFilteredEvents] = useState<Event[]>([])
   const [showCreateForm, setShowCreateForm] = useState(false)
   const [cardView, setCardView] = useState(VIEW_MODE.LIST)
+  const [filteredEvents, setFilteredEvents] = useState<Event[]>([])
   const [filterBy, setFilterBy] = useState(FILTER.ALL)
 
-  /**
-   * Handle change of filter for events
-   *
-   * @function
-   * @param {object} event
-   */
-  const handleFilterChange = (e: SyntheticEvent) => {
-    const target = e.target as HTMLButtonElement
-    setFilterBy(target.value)
-  }
-
-  const handleShowModal = () => {
-    setShowCreateForm((_showCreateForm) => !_showCreateForm)
-  }
+  
 
   /**
    * Filter events by date using date-fns
@@ -80,15 +64,29 @@ export const Events: NextPage<EventsProps> = ({
       }
     })
   }
-  const handleToggle = (e: SyntheticEvent) => {
-    const target = e.target as HTMLButtonElement
-    setCardView(target.value)
-  }
   /** Set filter on event list */
   useEffect(() => {
     const filteredEvent = filterEventsByDate(events, filterBy)
     setFilteredEvents(filteredEvent)
   }, [filterBy, events])
+  /**
+   * Handle change of filter for events
+   *
+   * @function
+   * @param {object} event
+   */
+  const handleFilterChange = (e: SyntheticEvent) => {
+    const target = e.target as HTMLButtonElement
+    setFilterBy(target.value)
+  }
+  const handleShowModal = () => {
+    setShowCreateForm((_showCreateForm) => !_showCreateForm)
+  }
+
+  const handleToggle = (e: SyntheticEvent) => {
+    const target = e.target as HTMLButtonElement
+    setCardView(target.value)
+  }
 
   const handleSubmit = (eventData: EventData) => {
     onSubmit(eventData)
@@ -98,85 +96,58 @@ export const Events: NextPage<EventsProps> = ({
   return (
     <PrivateRoute>
       {() => (
-    <Layout>
-      <Content>
-        <EventsActions>
-          <div>
-            <ButtonLink
-              isActive={filterBy === FILTER.ALL}
-              type="button"
-              onClick={handleFilterChange}
-              value={FILTER.ALL}
-            >
-              all events
-            </ButtonLink>
+        <Layout>
+          <Content>
+            <EventsActions>
+              <Actions onChange={handleFilterChange} filterBy={filterBy} />
+              <div>
+                <IconButton
+                  iconUrl="/icons/grid-view.svg"
+                  type="button"
+                  onClick={handleToggle}
+                  value={VIEW_MODE.CARDS}
+                  isActive={cardView === VIEW_MODE.CARDS}
+                />
+                <IconButton
+                  iconUrl="/icons/list-view.svg"
+                  type="button"
+                  onClick={handleToggle}
+                  value={VIEW_MODE.LIST}
+                  isActive={cardView === VIEW_MODE.LIST}
+                />
+              </div>
+            </EventsActions>
 
-            <ButtonLink
-              isActive={filterBy === FILTER.FUTURE}
-              type="button"
-              onClick={handleFilterChange}
-              value={FILTER.FUTURE}
-            >
-              future events
-            </ButtonLink>
+            <List type={cardView}>
+              {eventLoading ? (
+                <PageLoader />
+              ) : (
+                filteredEvents.map((event) => (
+                  <EventCard
+                    onHandleLeave={(e) => onHandleLeave(e)}
+                    onHandleJoin={(e) => onHandleJoin(e)}
+                    type={cardView}
+                    key={event.id}
+                    data={event}
+                  />
+                ))
+              )}
+            </List>
 
-            <ButtonLink
-              isActive={filterBy === FILTER.PAST}
+            <RoundButton
               type="button"
-              onClick={handleFilterChange}
-              value={FILTER.PAST}
-            >
-              past events
-            </ButtonLink>
-          </div>
-          <div>
-            <IconButton
-              iconUrl="/icons/grid-view.svg"
-              type="button"
-              onClick={handleToggle}
-              value={VIEW_MODE.CARDS}
-              isActive={cardView === VIEW_MODE.CARDS}
+              title="Create new event"
+              icon="/icons/plus.svg"
+              onClick={handleShowModal}
             />
-            <IconButton
-              iconUrl="/icons/list-view.svg"
-              type="button"
-              onClick={handleToggle}
-              value={VIEW_MODE.LIST}
-              isActive={cardView === VIEW_MODE.LIST}
-            />
-          </div>
-        </EventsActions>
-
-        <List type={cardView}>
-          {eventLoading ? (
-            <PageLoader />
-          ) : (
-            filteredEvents.map((event) => (
-              <EventCard
-                onHandleLeave={(e) => onHandleLeave(e)}
-                onHandleJoin={(e) => onHandleJoin(e)}
-                type={cardView}
-                key={event.id}
-                data={event}
-              />
-            ))
-          )}
-        </List>
-
-        <RoundButton
-          type="button"
-          title="Create new event"
-          icon="/icons/plus.svg"
-          onClick={handleShowModal}
-        />
-        {showCreateForm && (
-          <Modal onClose={handleShowModal}>
-            <EventForm onSubmit={handleSubmit} />
-          </Modal>
-        )}
-      </Content>
-    </Layout>
-    )}
+            {showCreateForm && (
+              <Modal onClose={handleShowModal}>
+                <EventForm onSubmit={handleSubmit} />
+              </Modal>
+            )}
+          </Content>
+        </Layout>
+      )}
     </PrivateRoute>
   )
 }
