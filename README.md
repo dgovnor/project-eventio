@@ -78,13 +78,9 @@ API documentation: [Apis](https://strvtestprojectv2.docs.apiary.io/)\
 
 ### What needs to be done
 
-- [ ] Hide Buttons for filtering events when in mobile view`
-
 - [ ] Fix Native date picker for mobile as it doesn't feel intuitive
 
 - [ ] Align login page for mobile view correctly
-
-- [ ] Fix show / hide password button click on enter
 
 - [ ] Sign up / Reset password - This can be done in the page folder.
 

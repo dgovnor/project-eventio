@@ -11,8 +11,10 @@ import { useOuterClick } from '../../../utils/useOuterClick'
 
 interface MenuProps {
   name: string
+  showNameInMobile?: boolean
+  align?: boolean
 }
-export const Menu: FC<MenuProps> = ({ name, children }) => {
+export const Menu: FC<MenuProps> = ({ name, showNameInMobile, align, children }) => {
   const [openMenu, setOpenMenu] = useState(false)
   const dropdownRef = useRef<HTMLDivElement>(null)
 
@@ -29,11 +31,11 @@ export const Menu: FC<MenuProps> = ({ name, children }) => {
         type="button"
         onClick={() => setOpenMenu(!openMenu)}
       >
-        <UserName>{name}</UserName>
+        <UserName showNameInMobile={showNameInMobile}>{name}</UserName>
         <Icon src="/icons/dropdown.svg" />
       </ButtonLink>
 
-      {openMenu && <Dropdown ref={dropdownRef}>{children}</Dropdown>}
+      {openMenu && <Dropdown align={align} ref={dropdownRef}>{children}</Dropdown>}
     </MenuWrapper>
   )
 }
